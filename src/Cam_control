@@ -1,0 +1,39 @@
+import bge
+cont = bge.logic.getCurrentController()
+scene = bge.logic.getCurrentScene()
+#lclick,always = cont.sensors
+scene = bge.logic.getCurrentScene()
+oblist = scene.objects
+Move= cont.sensors["Over"]
+print ('Move  %s ' % Move.position)
+import Rasterizer as R
+height = R.getWindowHeight()
+width = R.getWindowWidth()
+mx = Move.position[0]
+my = Move.position[1]
+
+prox = 25
+
+speed = 0.3
+
+if mx > (width-prox):
+	dx = speed
+    print ('MoveToRight ')
+elif mx < prox:
+	dx = -speed
+    print ('MoveToLeft ')
+else:
+	dx = 0
+
+#if my > (height-prox):
+#	dy = -speed
+#elif my < prox:
+#	dy = speed
+#else:
+#	dy = 0
+#
+#camtar = oblist['CamTarget']
+#x,y,z = camtar.position
+#camtar.position = [x+dx,y+dy,z]
+##adder = cont.actuators["AddTree"]
+##cont.activate(adder)
